@@ -1,0 +1,28 @@
+<html>
+
+<head>
+</head>
+<script>
+  class vm {
+    constructor() {
+      this.data = {}
+    }
+
+    $on(event, callback) {
+      const handlers = this.data[event] || []
+      handlers.push(callback)
+      this.data[event] = handlers
+    }
+
+    $emit(event) {
+      if (this.data[event]) {
+        this.data[event].forEach(handler => handler())
+      }
+    }
+  }
+  const v = new vm()
+  v.$on('change', () => console.log('changed'))
+  v.$emit('change')
+</script>
+
+</html>

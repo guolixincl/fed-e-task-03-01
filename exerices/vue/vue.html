@@ -1,0 +1,31 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+  <div id="app">
+    <h1>插值表达式</h1>
+    <div>{{msg}}</div>
+    <div>{{count}}</div>
+    <div v-text="msg"></div>
+    <input v-model="count"></input>
+  </div>
+  <script src='./js/dep.js'></script>
+  <script src='./js/watcher.js'></script>
+  <script src='./js/compiler.js'></script>
+  <script src='./js/observer.js'></script>
+  <script src='./js/vue.js'></script>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'hello',
+        count: 10
+      }
+    })
+  </script>
+</body>
+
+</html>

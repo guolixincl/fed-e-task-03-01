@@ -1,0 +1,39 @@
+<html>
+
+<head>
+
+</head>
+<script>
+  const data = {
+    msg: 'default',
+    count: ''
+  }
+
+  const vm = {}
+  proxy(data)
+  function proxy(data) {
+    Object.keys(data).forEach(key => {
+      Object.defineProperty(vm, key, {
+        enumerable: true,
+        configurable: true,
+        get() {
+          console.log('get')
+          return data[key]
+        },
+        set(newValue) {
+          console.log('set')
+          if (newValue === data[key]) {
+            return
+          }
+          data[key] = newValue
+        }
+      })
+    })
+  }
+
+
+  vm.msg = 'Hello'
+  console.log(vm.msg)
+</script>
+
+</html>
